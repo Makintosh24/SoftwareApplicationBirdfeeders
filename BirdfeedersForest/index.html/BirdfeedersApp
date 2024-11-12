@@ -1,0 +1,93 @@
+
+
+import math
+
+# Variable declaration
+# Number of bird feeders in the forest
+birdfeeders: int = 0 
+
+# Range of survival rate determined by the feeder segment classification
+base_survival_rate_range: tuple = (0.0, 0.0)
+
+# Calculated final survival rate based on diminishing returns formula
+calculated_survival_rate: float = 0.0
+
+# Forest attractiveness description
+forestattractiveness: str = " The forest is considered more attractive due to the increased  healthier bird population"
+
+
+# Function to classify bird feeder segments
+def classify_bird_feeders(feeders):
+    if feeders < 1:
+        return 'O', (0.0, 0.0)  # No feeders
+    elif 1 <= feeders <= 3:
+        return 'A', (0.1, 0.3)
+    elif 4 <= feeders <= 6:
+        return 'B', (0.3, 0.6)
+    elif feeders >= 7:
+        return 'C', (0.6, 0.99)
+    else:
+        return 'Invalid', (0.0, 0.0)
+
+# Function to calculate survival rate with diminishing returns
+def calculate_survival_rate_with_diminishing_returns(feeders, initial_rate):
+    k = 0.1  # Scaling factor for impact of feeders
+    # Logarithmic function to model diminishing returns
+    survival_rate = initial_rate + math.log10(1 + k * feeders)
+    # Cap the survival rate within a realistic range (0.1 to 0.99)
+    return min(max(survival_rate, 0.1), 0.99)
+
+# Function to determine forest attractiveness
+def calculate_attractiveness(feeders_segment):
+    attractiveness_mapping = {
+        'O': "Not very attractive",  # No feeders
+        'A': "Slightly attractive",  # Few feeders
+        'B': "Quite attractive",     # Moderate number of feeders
+        'C': "Highly attractive"     # High number of feeders
+    }
+    return attractiveness_mapping.get(feeders_segment, "Unknown")
+
+# Example usage
+#birdfeeders = int(input("Enter the number of bird feeders in the area: "))
+
+# Classify bird feeders and get the survival rate range
+#feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
+
+# Determine the survival rate using diminishing returns
+#final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, survival_rate_range[0])
+
+# Determine forest attractiveness
+#attractiveness = calculate_attractiveness(feeders_segment)
+
+# Output the results
+#print("\nAnalysis Result:")
+#print(f"Number of Bird Feeders: {birdfeeders}")
+#print(f"Feeders Segment: {feeders_segment}")
+#print(f"Calculated Bird Survival Rate with Diminishing Returns: {final_survival_rate:.2f}")
+#print(f"Forest Attractiveness: {attractiveness}")
+
+# Loop to allow multiple inputs
+while True:
+    birdfeeders = int(input("Enter the number of bird feeders in the area (or -1 to exit): "))
+
+    # Exit condition
+    if birdfeeders == -1:
+        print("Exiting the program. Thank you!")
+        break
+
+    # Classify bird feeders and get the survival rate range
+    feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
+
+    # Calculate survival rate with diminishing returns
+    final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, survival_rate_range[0])
+
+    # Determine forest attractiveness
+    attractiveness = calculate_attractiveness(feeders_segment)
+
+    # Print the results
+    print("\nAnalysis Result:")
+    print(f"Number of Bird Feeders: {birdfeeders}")
+    print(f"Feeders Segment: {feeders_segment}")
+    print(f"Calculated Bird Survival Rate with Diminishing Returns: {final_survival_rate:.2f}")
+    print(f"Forest Attractiveness: {attractiveness}")
+    print("-" * 40)
