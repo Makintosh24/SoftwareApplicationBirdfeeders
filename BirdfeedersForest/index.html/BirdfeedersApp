@@ -37,18 +37,30 @@ def calculate_survival_rate_with_diminishing_returns(feeders, initial_rate):
     # Cap the survival rate within a realistic range (0.1 to 0.99)
     return min(max(survival_rate, 0.1), 0.99)
 
-# Function to determine forest attractiveness
-def calculate_attractiveness(feeders_segment):
-    attractiveness_mapping = {
-        'O': "Not very attractive",  # No feeders
-        'A': "Slightly attractive",  # Few feeders
-        'B': "Quite attractive",     # Moderate number of feeders
-        'C': "Highly attractive"     # High number of feeders
-    }
-    return attractiveness_mapping.get(feeders_segment, "Unknown")
+# Function to determine the forest attractiveness based on diminishing returns
+def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
+    """
+    Determine the attractiveness of the forest based on the number of feeders and survival rate,
+    incorporating the concept of diminishing returns.
+    """
+    # Attractiveness scale adjusted for diminishing returns
+    if feeders == 0:
+        return "Not very attractive"  # No feeders present
+    elif 1 <= feeders <= 3:
+        return "Moderately Attractive"  # Few feeders
+    elif 4 <= feeders <= 6:
+        return "Quite Attractive"  # Moderate number of feeders
+    elif 7 <= feeders <= 10:
+        return "Highly Attractive"  # High number of feeders
+    else:  # Feeders > 10, where attractiveness plateaus
+        return "Saturated Attractiveness"
+
 
 # Example usage
 #birdfeeders = int(input("Enter the number of bird feeders in the area: "))
+
+attractiveness = calculate_attractiveness_with_diminishing_returns(feeders, survival_rate)
+print(f"The forest with {feeders} feeders and a survival rate of {survival_rate} is: {attractiveness}")
 
 # Classify bird feeders and get the survival rate range
 #feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
@@ -83,6 +95,9 @@ while True:
 
     # Determine forest attractiveness
     attractiveness = calculate_attractiveness(feeders_segment)
+
+attractiveness = calculate_attractiveness_with_diminishing_returns(feeders, survival_rate)
+print(f"The forest with {feeders} feeders and a survival rate of {survival_rate} is: {attractiveness}")
 
     # Print the results
     print("\nAnalysis Result:")
