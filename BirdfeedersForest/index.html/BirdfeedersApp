@@ -19,7 +19,7 @@ def classify_bird_feeders(feeders: int) -> tuple:
     elif 1 <= feeders <= 3:
         return 'A', (0.1, 0.3)  # Segment A: Few feeders
     elif 4 <= feeders <= 6:
-        return 'B', (0.3, 0.6)  # Segment B: Moderate feeders
+        return 'B', (0.3, 0.6)  # Segment B: Moderate number of feeders
     elif feeders >= 7:
         return 'C', (0.6, 0.99)  # Segment C: Many feeders
 
