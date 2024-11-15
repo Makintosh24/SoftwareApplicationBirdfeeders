@@ -16,6 +16,7 @@ birdfeeders: int = 0  # Number of bird feeders in the forest
 # Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
 
+
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
@@ -81,10 +82,10 @@ def main():
         
         # Calculate survival rate with diminishing returns
         final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, survival_rate_range[0])
-        
-        # Determine forest attractiveness
-        attractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders)
-        
+
+        # Store the calculated attractiveness
+forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, calculated_survival_rate)
+    
         # Output the results
         print("\nAnalysis Result:")
         print(f"Number of Bird Feeders: {birdfeeders}")
