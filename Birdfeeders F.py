@@ -91,7 +91,7 @@ forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfee
         print(f"Number of Bird Feeders: {birdfeeders}")
         print(f"Feeders Segment: {feeders_segment}")
         print(f"Calculated Bird Survival Rate with Diminishing Returns: {final_survival_rate:.2f}")
-        print(f"Forest Attractiveness: {attractiveness}")
+        print(f"Forest Attractiveness: {forestattractiveness}")
         print("-" * 40)
 
 
