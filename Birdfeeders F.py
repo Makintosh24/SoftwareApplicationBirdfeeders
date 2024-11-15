@@ -36,13 +36,15 @@ def classify_bird_feeders(feeders: int) -> tuple:
 # Function to calculate survival rate with diminishing returns
 def calculate_survival_rate_with_diminishing_returns(feeders: int, min_rate: float) -> float:
     """
-    Calculate the final survival rate with a diminishing returns effect based on the number of feeders.
+   # Calculate the final survival rate with a diminishing returns effect based on the number of feeders.
     """
-    k = 0.1  # Scaling factor for impact of feeders
-    # Using a logarithmic function to model diminishing returns
-    survival_rate = min_rate + math.log10(1 + k * feeders)
-    # Cap the survival rate within a realistic range (0.1 to 0.99)
-    return round(min(max(survival_rate, 0.1), 0.99), 2)
+   
+def calculate_survival_rate_with_diminishing_returns(feeders, initial_rate):
+    k = 0.16  # Adjusted for 38% higher survival rates
+    # Logarithmic function to model diminishing returns
+    survival_rate = initial_rate + math.log10(1 + k * feeders)
+    # Cap the survival rate between 0.1 and 0.99
+    return min(max(survival_rate, 0.1), 0.99)
 
 # Function to determine the forest attractiveness based on diminishing returns
 def calculate_attractiveness_with_diminishing_returns(feeders: int) -> str:
