@@ -41,7 +41,7 @@ def calculate_survival_rate_with_diminishing_returns(feeders: int, min_rate: flo
     """
    
 def calculate_survival_rate_with_diminishing_returns(feeders, initial_rate):
-    k = 0.16  # Adjusted for 38% higher survival rates
+    k = 0.16  # Scaling factor for impact of feeders adjusted for 38% higher survival rates
     # Logarithmic function to model diminishing returns
     survival_rate = initial_rate + math.log10(1 + k * feeders)
     # Cap the survival rate between 0.1 and 0.99
