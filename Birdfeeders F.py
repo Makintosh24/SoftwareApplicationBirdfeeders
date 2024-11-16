@@ -11,7 +11,7 @@
 import math
 
 # Variable declarations
-birdfeeders: int = 0  # Number of bird feeders in the forest
+birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
 
 # Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
@@ -91,7 +91,7 @@ forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfee
         print(f"Number of Bird Feeders: {birdfeeders}")
         print(f"Feeders Segment: {feeders_segment}")
         print(f"Calculated Bird Survival Rate with Diminishing Returns: {final_survival_rate:.2f}")
-        print(f"Forest Attractiveness: {forestattractiveness}")
+        print(f"Forest Attractiveness: {forestattractiveness}") # Printing the specific attractiveness message
         print("-" * 40)
 
 
