@@ -90,6 +90,7 @@ forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfee
         print("\nAnalysis Result:")
         print(f"Number of Bird Feeders: {birdfeeders}")
         print(f"Feeders Segment: {feeders_segment}")
+        print(f"Initial Survival Rate (User Input): {initial_survival_rate:.2f}")
         print(f"Calculated Bird Survival Rate with Diminishing Returns: {final_survival_rate:.2f}")
         print(f"Forest Attractiveness: {forestattractiveness}") # Printing the specific attractiveness message
         print("-" * 40)
@@ -121,6 +122,13 @@ def main():
 # Normalize survival rate input (percentage to decimal)
             survivalrate /= 100
 
+# User input for the initial survival rate manually
+            initial_survival_rate = float(input("Enter the initial survival rate of birds (between 0.0 and 1.0): "))
+            if initial_survival_rate < 0 or initial_survival_rate > 1:
+                print("Invalid input. Survival rate must be between 0.0 and 1.0.")
+                continue
+
+            
             # Calculate the final survival rate using diminishing returns
             feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
             birdsurvivalrate = calculate_survival_rate_with_diminishing_returns(birdfeeders, survival_rate_range[0])
