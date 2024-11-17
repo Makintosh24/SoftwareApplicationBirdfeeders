@@ -81,6 +81,15 @@ def main():
                 print("Invalid input. Survival rate must be between 0.0 and 1.0.")
                 continue
 
+            # Loop to allow multiple inputs
+    while True:
+        birdfeeders = int(input("Enter the number of bird feeders in the area (or -1 to exit): "))
+        
+        # Exit condition
+        if birdfeeders == -1:
+            print("Exiting the program. Thank you!")
+            break
+
             # Classify bird feeders and get the survival rate range
             feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
 
