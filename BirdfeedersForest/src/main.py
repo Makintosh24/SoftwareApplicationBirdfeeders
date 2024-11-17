@@ -35,6 +35,10 @@ def calculate_survival_rate_with_diminishing_returns(feeders: int, initial_rate:
     # Cap the survival rate between 0.1 and 0.99
     return min(max(survival_rate, 0.1), 0.99)
 
+ # Check if feeders are more than 10 (plateau case first)
+    if feeders > 10:  
+        return "Saturated Attractiveness"
+    # Now, evaluate attractiveness based on both feeders and survival rate
 # Function to determine the forest attractiveness based on diminishing returns
 def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
     # Adjust attractiveness based on both the number of feeders and the survival rate
