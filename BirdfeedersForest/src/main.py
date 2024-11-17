@@ -23,7 +23,7 @@ forestattractiveness: str = "The forest is considered more attractive due to the
 # Function to classify bird feeder segments and get survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
     
-    Classify the number of feeders into segments and provide base survival rate range.
+    # Classify the number of feeders into segments and provide base survival rate range.
 
     if feeders < 1:
         return 'O', (0.0, 0.0)  # No feeders
@@ -36,10 +36,10 @@ def classify_bird_feeders(feeders: int) -> tuple:
 
 # Function to calculate survival rate with diminishing returns
 def calculate_survival_rate_with_diminishing_returns(feeders: int, min_rate: float) -> float:
-    
-   # Calculate the final survival rate with a diminishing returns effect based on the number of feeders.
-    
-   
+    # Calculate the final survival rate with a diminishing returns effect based on the number of feeders.
+    return 1
+
+
 def calculate_survival_rate_with_diminishing_returns(feeders, initial_rate):
     k = 0.38  # Scaling factor for impact of feeders adjusted for 38% higher survival rates
     # Logarithmic function to model diminishing returns
@@ -83,7 +83,7 @@ def main():
         final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, survival_rate_range[0])
 
         # Store the calculated attractiveness
-forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, calculated_survival_rate)
+        forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, calculated_survival_rate)
     
         # Output the results
         print("\nAnalysis Result:")
