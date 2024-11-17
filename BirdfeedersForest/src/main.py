@@ -44,7 +44,7 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
         return "Moderately Attractive"
     elif 4 <= feeders <= 6 and survival_rate <= 0.7:
         return "Quite Attractive"
-    elif 7 <= feeders <= 10 and survival_rate <= 0.9:
+    elif 7 <= feeders <= 10 and survival_rate <= 0.99:
         return "Highly Attractive"
     elif feeders > 10:  # Feeders > 10, where attractiveness plateaus
         return "Saturated Attractiveness"
