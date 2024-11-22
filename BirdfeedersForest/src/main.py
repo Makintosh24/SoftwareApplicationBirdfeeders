@@ -15,7 +15,7 @@ calculated_survival_rate: float = 0.0
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
-# Function to classify bird feeder segments and get survival rate range
+# Function to classify bird feeder into  segments and get survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
     # Classify the number of feeders into segments and provide base survival rate range.
     if feeders < 1:
@@ -53,42 +53,37 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     elif feeders > 10:  # Feeders > 10, where attractiveness plateaus
         return "Saturated Attractiveness"
 
-# Function to print results
-def print_results(forest_attractiveness: str, bird_survival_rate: float):
-    print("\nAnalysis Result:")
-    print(f"Calculated Bird Survival Rate with Diminishing Returns: {bird_survival_rate:.2f}")
-    print(f"Forest Attractiveness: {forest_attractiveness}")
-    print("-" * 40)
+
 
 # Main function for user interaction
 def main():
-    print("\nWelcome to the Forest Attractiveness Calculator!")
+    print("Welcome to the Forest Attractiveness Calculator!")
 
    # Loop to allow multiple inputs
     while True:
         try:
             # User input for the number of bird feeders
-            birdfeeders = int(input("Enter the number of bird feeders in the area (or -1 to exit): "))
-            
-            # Exit condition
+                        birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             if birdfeeders == -1:
+                break  # Exit the loop if user inputs -1
+    
                 print("Exiting the program. Thank you!")
                 break 
-    
-    while True:
-        try:
-            # User input for the number of bird feeders
-            birdfeeders = int(input("Enter the number of bird feeders in the forest (1-20): "))
-            if birdfeeders < 0:
-                print("Number of feeders cannot be negative. Please try again.")
+           if birdfeeders <0
+                        print("Number of feeders cannot be negative. Please try again.")
                 continue
             if birdfeeders > 20:
-                print("Allowed number of feeders is between 1 and 20.")
+                print("Allowed number of feeders is between 0 and 20. Please try again.")
                 continue
+
+
+    
+    
 
             # User input for the initial survival rate manually
             initial_survival_rate = float(input("Enter the initial survival rate of birds (between 0.0 and 1.0): "))
             if initial_survival_rate < 0 or initial_survival_rate > 1:
+                if not (0.0 <= initial_survival_rate <= 1.0):                
                 print("Invalid input. Survival rate must be between 0.0 and 1.0.")
                 continue
 
@@ -103,18 +98,33 @@ def main():
             # Calculate forest attractiveness
             forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, final_survival_rate)
 
-            # Print the results
-            print_results(forestattractiveness, final_survival_rate)
+
+            # Output the results
+            print("\nAnalysis Result:")
+            print(f"Number of Bird Feeders: {birdfeeders}")
+            print(f"Feeders Segment: {feeders_segment}")
+            print(f"Initial Survival Rate: {initial_survival_rate:.2f}")
+            print(f"Final Survival Rate with Diminished Returns: {final_survival_rate:.2f}")
+            print(f"Forest Attractiveness: {attractiveness}")
+            print("-" * 40)
+
+            # Ask the user wants to perform another calculation
+            if input("New calculation (y or n)? ").strip().lower() in ["n", "no"]:
+
 
             # Check if the user wants a new calculation
             if input("New calculation (y or n)? ").lower() == "n":
-                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+            
                 break
             else:
                 print('\nStarting a new calculation...\n')
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
+
+    # Exit message
+    print("Thank you for using the Forest Attractiveness Calculator. Goodbye!"
+
 
 # Execute the main function
 if __name__ == "__main__":
