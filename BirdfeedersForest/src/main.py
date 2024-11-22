@@ -53,6 +53,8 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     """
     Determine the forest attractiveness based on feeders and survival rate.
     """
+def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
+ 
     if feeders == 0 or survival_rate < 0.2:
         return "Not very attractive"
     elif 1 <= feeders <= 3 and survival_rate <= 0.4:
@@ -62,7 +64,10 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     elif 7 <= feeders <= 10 and survival_rate <= 0.99:
         return "Highly Attractive"
     elif feeders > 10:
-        return "Saturated Attractiveness"
+        return "Saturated Attractiveness" 
+        else:
+        return "Undefined"  # Handle undefined cases explicitly 
+
 
 # Main function for user interaction
 def main():
@@ -98,15 +103,19 @@ def main():
             # Calculate forest attractiveness
             forestattractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, final_survival_rate)
 
-            # Output the results
-            print("\nAnalysis Result:")
-            print(f"Number of Bird Feeders: {birdfeeders}")
-            print(f"Feeders Segment: {feeders_segment}")
-            print(f"Initial Survival Rate: {initial_survival_rate:.2f}")
-            print(f"Final Survival Rate with Diminished Returns: {final_survival_rate:.2f}")
-            print(f"Forest Attractiveness: {forestattractiveness}")
-            print(f"\n{forestattractiveness}")  # Print the constant message
-            print("-" * 40)
+           
+
+        # Output the results
+       print("\nAnalysis Result:")
+       print(f"Number of Bird Feeders: {birdfeeders}")
+       print(f"Feeders Segment: {feeders_segment}")
+       print(f"Initial Survival Rate: {initial_survival_rate:.2f}")
+       print(f"Final Survival Rate with Diminished Returns: {final_survival_rate:.2f}")
+       print(f"Forest Attractiveness: {attractiveness}")
+       print(f"\n{forestattractiveness}")  # Add this line to ensure the string is printed
+       print("-" * 40)
+
+            
 
             # Check if user wants a new calculation
             if input("New calculation (y or n)? ").strip().lower() in ["n", "no"]:
