@@ -9,8 +9,13 @@
 import math
 
 # Variable declarations
+
 birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
+
+
+# Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
+
 
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
@@ -100,6 +105,7 @@ def main():
             print(f"Initial Survival Rate: {initial_survival_rate:.2f}")
             print(f"Final Survival Rate with Diminished Returns: {final_survival_rate:.2f}")
             print(f"Forest Attractiveness: {forestattractiveness}")
+            print(f"\n{forestattractiveness}")  # Print the constant message
             print("-" * 40)
 
             # Check if user wants a new calculation
