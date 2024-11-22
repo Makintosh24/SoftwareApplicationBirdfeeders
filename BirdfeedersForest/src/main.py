@@ -108,7 +108,7 @@ def main():
             print(f"Forest Attractiveness: {attractiveness}")
             print("-" * 40)
 
-            # Ask the user wants to perform another calculation
+            # Ask whether the  user wants to perform another calculation
             if input("New calculation (y or n)? ").strip().lower() in ["n", "no"]:
 
 
