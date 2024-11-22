@@ -112,13 +112,18 @@ def main():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # Exit message
+    # Exit message 
     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+
 
 # Execute the main function
 if __name__ == "__main__":
     main()
 
+
+
+
+    
 
 
 
