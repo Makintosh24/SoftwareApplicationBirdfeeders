@@ -20,8 +20,8 @@ calculated_survival_rate: float = 0.0
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
-
 import math
+
 
 # Function to classify bird feeders into segments and provide survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
@@ -33,7 +33,7 @@ def classify_bird_feeders(feeders: int) -> tuple:
     elif 1 <= feeders <= 3:
         return 'A', (0.1, 0.3)  # Segment A: Few feeders
     elif 4 <= feeders <= 6:
-        return 'B', (0.3, 0.6)  # Segment B: Moderate feeders
+        return 'B', (0.3, 0.6)  # Segment B: Moderate number of  feeders
     elif feeders >= 7:
         return 'C', (0.6, 0.99)  # Segment C: Many feeders
 
@@ -53,8 +53,6 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     """
     Determine the forest attractiveness based on feeders and survival rate.
     """
-def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
- 
     if feeders == 0 or survival_rate < 0.2:
         return "Not very attractive"
     elif 1 <= feeders <= 3 and survival_rate <= 0.4:
@@ -64,10 +62,8 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     elif 7 <= feeders <= 10 and survival_rate <= 0.99:
         return "Highly Attractive"
     elif feeders > 10:
-        return "Saturated Attractiveness" 
-        else:
-        return "Undefined"  # Handle undefined cases explicitly 
-
+        return "Saturated Attractiveness"
+    return "Undefined"  # Handle undefined cases explicitly
 
 # Main function for user interaction
 def main():
@@ -119,10 +115,13 @@ def main():
     # Exit message
     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
 
-        
 # Execute the main function
 if __name__ == "__main__":
     main()
+
+
+
+
 
 
 
