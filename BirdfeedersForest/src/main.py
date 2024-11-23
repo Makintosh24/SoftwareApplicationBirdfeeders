@@ -81,7 +81,7 @@ def main():
             # Exit condition for -1
             if birdfeeders == -1:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break
+                return  # Exit the program immediately after printing the goodbye message.
 
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative. Please try again.")
@@ -116,7 +116,7 @@ def main():
                 new_calc = input("New calculation (y or n)? ").strip().lower()
                 if new_calc in ["n", "no"]:
                     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                    return  # Ensure program exits gracefully
+                    return  # Exit the program immediately after printing the goodbye message.
                 elif new_calc in ["y", "yes"]:
                     break  # Exit inner loop and start over
                 else:
@@ -128,3 +128,4 @@ def main():
 # Run the program
 if __name__ == "__main__":
     main()
+
