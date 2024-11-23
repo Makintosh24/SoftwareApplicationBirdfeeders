@@ -7,7 +7,6 @@
 # Copyright (c) by Shilyn Makin
 
 
-
 import math
 
 # Variable declarations
@@ -75,6 +74,7 @@ def main():
             # Input number of feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             if birdfeeders == -1:
+                print("About to print Goodbye message...")  # Debug line
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the loop after printing the goodbye message
 
@@ -110,6 +110,7 @@ def main():
             # Prompt for new calculation
             new_calc = input("New calculation (y or n)? ").strip().lower()
             if new_calc in ["n", "no"]:
+                print("About to print Goodbye message...")  # Debug line
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the program after printing the goodbye message
             elif new_calc in ["y", "yes"]:
@@ -123,4 +124,3 @@ def main():
 # Run the program
 if __name__ == "__main__":
     main()
-
