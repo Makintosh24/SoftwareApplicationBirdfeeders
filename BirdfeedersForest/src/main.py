@@ -6,15 +6,14 @@
 #
 # Copyright (c) by Shilyn Makin
 
+
 import math
 
 # Variable declarations
-
 birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
 
 # Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
-
 
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
@@ -47,10 +46,8 @@ def calculate_survival_rate_with_diminishing_returns(feeders: int, initial_rate:
 # Function to determine forest attractiveness based on diminishing returns
 def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
     """
-    Determine the forest attractiveness based on the number of feeders and survival rate.
-    More granular ranges based on survival rate for each feeder category.
+    Determine the forest attractiveness based on feeders and survival rate.
     """
-
     # Case when no feeders, or survival rate too low
     if feeders == 0 or survival_rate < 0.2:
         return "Not very attractive"
@@ -100,6 +97,7 @@ def main():
             # User input for the number of bird feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             if birdfeeders == -1:
+                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the loop if user inputs -1
 
             if birdfeeders < 0:
@@ -143,15 +141,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-
-            
-
-
-    
-    
-
-          
-
-           
