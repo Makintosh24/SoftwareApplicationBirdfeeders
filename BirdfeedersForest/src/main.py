@@ -27,6 +27,11 @@ import math
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
 
+import math
+
+# Variable declarations
+forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
+
 # Function to classify bird feeders
 def classify_bird_feeders(feeders: int) -> tuple:
     if feeders < 1:
@@ -84,9 +89,10 @@ def main():
     try:
         while True:
             try:
+                # Get number of feeders
                 birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
                 if birdfeeders == -1:
-                    break  # Exit the loop and proceed to goodbye message
+                    break  # Exit the program
 
                 if birdfeeders < 0:
                     print("Number of feeders cannot be negative.")
@@ -96,13 +102,13 @@ def main():
                     print("Allowed number of feeders is between 0 and 20. Please try again.")
                     continue
 
-                # Input for initial survival rate
+                # Get initial survival rate
                 initial_survival_rate = float(input("Enter the initial survival rate of birds (between 0.0 and 1.0): "))
                 if not (0.0 <= initial_survival_rate <= 1.0):
                     print("Invalid input. Survival rate must be between 0.0 and 1.0.")
                     continue
 
-                # Classify feeders and calculate results
+                # Process results
                 feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
                 final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, initial_survival_rate)
                 attractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, final_survival_rate)
@@ -117,13 +123,13 @@ def main():
                 print(f"\n{forestattractiveness}")
                 print("-" * 40)
 
-                # Prompt for a new calculation
+                # Prompt for another calculation
                 while True:
                     new_calc = input("New calculation (y or n)? ").strip().lower()
                     if new_calc in ["n", "no"]:
-                        return  # Exit the program after printing goodbye
+                        return  # Exit the program
                     elif new_calc in ["y", "yes"]:
-                        break  # Start over
+                        break  # Continue to the next calculation
                     else:
                         print("Invalid input. Please enter 'y' or 'n'.")
 
@@ -131,10 +137,12 @@ def main():
                 print("Invalid input. Please enter a valid number.")
 
     finally:
-        # Ensure this message always gets printed no matter how the program exits
+        # Always print the goodbye message when exiting
         print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+
 
 # Run the program
 if __name__ == "__main__":
     main()
+
 
