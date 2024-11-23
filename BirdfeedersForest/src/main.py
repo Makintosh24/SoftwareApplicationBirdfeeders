@@ -52,18 +52,51 @@ def calculate_survival_rate_with_diminishing_returns(feeders: int, initial_rate:
 def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
     """
     Determine the forest attractiveness based on feeders and survival rate.
+  def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
     """
+    Determine the forest attractiveness based on the number of feeders and survival rate.
+    More granular ranges based on survival rate for each feeder category.
+    """
+
+    # Case when no feeders, or survival rate too low
     if feeders == 0 or survival_rate < 0.2:
         return "Not very attractive"
-    elif 1 <= feeders <= 3 and survival_rate <= 0.4:
-        return "Moderately Attractive"
-    elif 4 <= feeders <= 6 and survival_rate <= 0.7:
-        return "Quite Attractive"
-    elif 7 <= feeders <= 10 and survival_rate <= 0.99:
-        return "Highly Attractive"
+
+    # Feeders between 1 and 3
+    elif 1 <= feeders <= 3:
+        if survival_rate < 0.4:
+            return "Moderately Attractive"
+        elif 0.4 <= survival_rate < 0.7:
+            return "Quite Attractive"
+        elif survival_rate >= 0.7:
+            return "Highly Attractive"
+
+    # Feeders between 4 and 6
+    elif 4 <= feeders <= 6:
+        if survival_rate < 0.5:
+            return "Moderately Attractive"
+        elif 0.5 <= survival_rate < 0.8:
+            return "Quite Attractive"
+        elif survival_rate >= 0.8:
+            return "Highly Attractive"
+
+    # Feeders between 7 and 10
+    elif 7 <= feeders <= 10:
+        if survival_rate < 0.7:
+            return "Moderately Attractive"
+        elif 0.7 <= survival_rate < 0.9:
+            return "Quite Attractive"
+        elif survival_rate >= 0.9:
+            return "Highly Attractive"
+
+    # Feeders greater than 10, always "Saturated Attractiveness"
     elif feeders > 10:
         return "Saturated Attractiveness"
-    return "Undefined"  # Handle undefined cases explicitly
+    
+    # Undefined fallback if something unexpected occurs
+    else:
+        return "Undefined" 
+
 
 # Main function for user interaction
 def main():
