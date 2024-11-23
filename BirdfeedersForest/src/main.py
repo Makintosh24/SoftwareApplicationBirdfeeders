@@ -7,6 +7,7 @@
 # Copyright (c) by Shilyn Makin
 
 
+
 import math
 
 # Variable declarations
@@ -91,16 +92,15 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
 def main():
     print("Welcome to the Forest Attractiveness Calculator!")
 
-    # Loop to allow multiple inputs
     while True:
         try:
             # User input for the number of bird feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
-            
+
+            # If user enters -1, print goodbye message and exit
             if birdfeeders == -1:
-                # Goodbye message when the user enters -1
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break  # Exit the loop if user inputs -1
+                break
 
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative. Please try again.")
@@ -132,15 +132,16 @@ def main():
 
             # Ask if the user wants to perform another calculation
             user_input = input("New calculation (y or n)? ").strip().lower()
+            
             if user_input in ["n", "no"]:
-                # Goodbye message when the user chooses to exit with 'n'
+                # Goodbye message when user chooses to exit with 'n'
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the loop
-
+            
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # End the loop gracefully by ensuring that this message is outside the loop
+    # Ensure goodbye message is printed here if program ends unexpectedly
     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
 
 # Execute the main function
