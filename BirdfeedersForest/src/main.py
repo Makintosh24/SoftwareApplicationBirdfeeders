@@ -131,33 +131,22 @@ def main():
             print("-" * 40)
 
             # Ask if the user wants to perform another calculation
-            if input("New calculation (y or n)? ").strip().lower() in ["n", "no"]:
-                break
+            user_input = input("New calculation (y or n)? ").strip().lower()
+            if user_input in ["n", "no"]:
+                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+                break  # Explicitly break out of the loop
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
-
-    # Exit message (must be outside the loop to ensure execution after break)
-    print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
 
 # Execute the main function
 if __name__ == "__main__":
     main()
 
 
-    
-      
-
-  
-
-    
 
 
-
-
-
-
-
+            
 
 
     
