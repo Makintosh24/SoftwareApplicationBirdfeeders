@@ -69,12 +69,12 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
 def main():
     print("Welcome to the Forest Attractiveness Calculator!")
 
-    
-        
+    while True:  # Main loop to keep the program running until the user exits
+        try:
             # Input number of feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             if birdfeeders == -1:
-                print("About to print Goodbye message...")  # Debug line
+                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the loop after printing the goodbye message
 
             if birdfeeders < 0:
@@ -110,7 +110,6 @@ def main():
             new_calc = input("New calculation (y or n)? ").strip().lower()
             if new_calc in ["n", "no"]:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                return  # This ensures the program exits gracefully after printing the goodbye message
                 break  # Exit the program after printing the goodbye message
             elif new_calc in ["y", "yes"]:
                 continue  # Continue the loop and start the next calculation
@@ -120,11 +119,10 @@ def main():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # Keep the terminal open
-    input("Press Enter to exit...")  # This ensures the terminal window stays open
+    # Keep the terminal open (if running in some environments)
+    input("Press Enter to exit...")  # This ensures the terminal window stays open if needed
 
 # Run the program
 if __name__ == "__main__":
     main()
 
-input("Press Enter to exit...")
