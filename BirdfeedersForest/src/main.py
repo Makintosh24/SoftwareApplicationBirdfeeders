@@ -145,7 +145,7 @@ def main():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # Exit message 
+    # Exit message (must be outside the loop to ensure execution after break)
     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
 
 
