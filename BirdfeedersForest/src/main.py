@@ -12,16 +12,12 @@ import math
 
 birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
 
-
 # Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
 
 
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
-
-import math
-
 
 # Function to classify bird feeders into segments and provide survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
@@ -33,7 +29,7 @@ def classify_bird_feeders(feeders: int) -> tuple:
     elif 1 <= feeders <= 3:
         return 'A', (0.1, 0.3)  # Segment A: Few feeders
     elif 4 <= feeders <= 6:
-        return 'B', (0.3, 0.6)  # Segment B: Moderate number of  feeders
+        return 'B', (0.3, 0.6)  # Segment B: Moderate number of feeders
     elif feeders >= 7:
         return 'C', (0.6, 0.99)  # Segment C: Many feeders
 
@@ -50,9 +46,6 @@ def calculate_survival_rate_with_diminishing_returns(feeders: int, initial_rate:
 
 # Function to determine forest attractiveness based on diminishing returns
 def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
-    """
-    Determine the forest attractiveness based on feeders and survival rate.
-  def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
     """
     Determine the forest attractiveness based on the number of feeders and survival rate.
     More granular ranges based on survival rate for each feeder category.
@@ -95,8 +88,7 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
     
     # Undefined fallback if something unexpected occurs
     else:
-        return "Undefined" 
-
+        return "Undefined"
 
 # Main function for user interaction
 def main():
@@ -148,13 +140,15 @@ def main():
     # Exit message (must be outside the loop to ensure execution after break)
     print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
 
-
 # Execute the main function
 if __name__ == "__main__":
     main()
 
 
+    
+      
 
+  
 
     
 
