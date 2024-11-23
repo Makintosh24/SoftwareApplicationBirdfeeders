@@ -121,6 +121,11 @@ def main():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+    # Keep the terminal open
+    input("Press Enter to exit...")  # This ensures the terminal window stays open
+
 # Run the program
 if __name__ == "__main__":
     main()
+
+input("Press Enter to exit...")
