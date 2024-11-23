@@ -21,12 +21,6 @@ calculated_survival_rate: float = 0.0
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
 
-import math
-
-# Variable declarations
-birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
-calculated_survival_rate: float = 0.0
-forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
 # Function to classify bird feeders into segments and provide survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
@@ -79,16 +73,16 @@ def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rat
 def main():
     print("Welcome to the Forest Attractiveness Calculator!")
     
-    # Loop to allow multiple inputs
     while True:
         try:
+            # Input for bird feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             
-            # Handle exit condition for -1
+            # Exit condition for -1
             if birdfeeders == -1:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break  # Ensure we exit the loop properly
-            
+                break
+
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative. Please try again.")
                 continue
@@ -96,40 +90,41 @@ def main():
                 print("Allowed number of feeders is between 0 and 20. Please try again.")
                 continue
 
-            # User input for the initial survival rate
+            # Input for initial survival rate
             initial_survival_rate = float(input("Enter the initial survival rate of birds (between 0.0 and 1.0): "))
             if not (0.0 <= initial_survival_rate <= 1.0):
                 print("Invalid input. Survival rate must be between 0.0 and 1.0.")
                 continue
 
-            # Classify bird feeders and calculate results
+            # Classify feeders and calculate results
             feeders_segment, survival_rate_range = classify_bird_feeders(birdfeeders)
             final_survival_rate = calculate_survival_rate_with_diminishing_returns(birdfeeders, initial_survival_rate)
             attractiveness = calculate_attractiveness_with_diminishing_returns(birdfeeders, final_survival_rate)
 
-            # Output the results
+            # Display results
             print("\nAnalysis Result:")
             print(f"Number of Bird Feeders: {birdfeeders}")
             print(f"Feeders Segment: {feeders_segment}")
             print(f"Initial Survival Rate: {initial_survival_rate:.2f}")
             print(f"Final Survival Rate with Diminished Returns: {final_survival_rate:.2f}")
             print(f"Forest Attractiveness: {attractiveness}")
-            print(f"\n{forestattractiveness}")  # Print the constant message
+            print(f"\n{forestattractiveness}")  # Print constant message
             print("-" * 40)
 
-            # Ask if the user wants to perform another calculation
-            new_calc = input("New calculation (y or n)? ").strip().lower()
-            if new_calc in ["n", "no"]:
-                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break
+            # Prompt for a new calculation
+            while True:
+                new_calc = input("New calculation (y or n)? ").strip().lower()
+                if new_calc in ["n", "no"]:
+                    print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+                    return  # Ensure program exits gracefully
+                elif new_calc in ["y", "yes"]:
+                    break  # Exit inner loop and start over
+                else:
+                    print("Invalid input. Please enter 'y' or 'n'.")
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-# Execute the main function
+# Run the program
 if __name__ == "__main__":
     main()
-
-
-
-
