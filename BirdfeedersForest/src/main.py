@@ -83,70 +83,7 @@ def main():
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative")
 
-# Function to classify bird feeders into segments and provide survival rate range
-def classify_bird_feeders(feeders: int) -> tuple:
-    if feeders < 1:
-        return 'O', (0.0, 0.0)  # No feeders
-    elif 1 <= feeders <= 3:
-        return 'A', (0.1, 0.3)  # Segment A: Few feeders
-    elif 4 <= feeders <= 6:
-        return 'B', (0.3, 0.6)  # Segment B: Moderate feeders
-    elif feeders >= 7:
-        return 'C', (0.6, 0.99)  # Segment C: Many feeders
 
-# Function to calculate survival rate with diminishing returns
-def calculate_survival_rate_with_diminishing_returns(feeders: int, initial_rate: float) -> float:
-    k = 0.38  # Scaling factor for feeders' impact
-    survival_rate = initial_rate + math.log10(1 + k * feeders)
-    return min(max(survival_rate, 0.1), 0.99)
-
-# Function to determine forest attractiveness
-def calculate_attractiveness_with_diminishing_returns(feeders: int, survival_rate: float) -> str:
-    if feeders == 0 or survival_rate < 0.2:
-        return "Not very attractive"
-    elif 1 <= feeders <= 3:
-        if survival_rate < 0.4:
-            return "Moderately Attractive"
-        elif 0.4 <= survival_rate < 0.7:
-            return "Quite Attractive"
-        elif survival_rate >= 0.7:
-            return "Highly Attractive"
-    elif 4 <= feeders <= 6:
-        if survival_rate < 0.5:
-            return "Moderately Attractive"
-        elif 0.5 <= survival_rate < 0.8:
-            return "Quite Attractive"
-        elif survival_rate >= 0.8:
-            return "Highly Attractive"
-    elif 7 <= feeders <= 10:
-        if survival_rate < 0.7:
-            return "Moderately Attractive"
-        elif 0.7 <= survival_rate < 0.9:
-            return "Quite Attractive"
-        elif survival_rate >= 0.9:
-            return "Highly Attractive"
-    elif feeders > 10:
-        return "Saturated Attractiveness"
-    else:
-        return "Undefined"
-
-# Main function for user interaction
-def main():
-    print("Welcome to the Forest Attractiveness Calculator!")
-    
-    while True:
-        try:
-            # Input for bird feeders
-            birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
-            
-            # Exit condition for -1
-            if birdfeeders == -1:
-                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                return  # Exit the program immediately after printing the goodbye message.
-
-            if birdfeeders < 0:
-                print("Number of feeders cannot be negative. Please try again.")
-                continue
             if birdfeeders > 20:
                 print("Allowed number of feeders is between 0 and 20. Please try again.")
                 continue
