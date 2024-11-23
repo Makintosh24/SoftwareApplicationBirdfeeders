@@ -20,6 +20,14 @@ calculated_survival_rate: float = 0.0
 # Forest attractiveness description
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
+
+import math
+
+# Variable declarations
+birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
+calculated_survival_rate: float = 0.0
+forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
+
 # Function to classify bird feeders into segments and provide survival rate range
 def classify_bird_feeders(feeders: int) -> tuple:
     if feeders < 1:
@@ -27,7 +35,7 @@ def classify_bird_feeders(feeders: int) -> tuple:
     elif 1 <= feeders <= 3:
         return 'A', (0.1, 0.3)  # Segment A: Few feeders
     elif 4 <= feeders <= 6:
-        return 'B', (0.3, 0.6)  # Segment B: Moderate number of feeders
+        return 'B', (0.3, 0.6)  # Segment B: Moderate feeders
     elif feeders >= 7:
         return 'C', (0.6, 0.99)  # Segment C: Many feeders
 
@@ -74,13 +82,12 @@ def main():
     # Loop to allow multiple inputs
     while True:
         try:
-            # User input for the number of bird feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             
             # Handle exit condition for -1
             if birdfeeders == -1:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                return  # Explicitly end the program
+                break  # Ensure we exit the loop properly
             
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative. Please try again.")
@@ -114,7 +121,7 @@ def main():
             new_calc = input("New calculation (y or n)? ").strip().lower()
             if new_calc in ["n", "no"]:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                return  # Exit the program explicitly here
+                break
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
@@ -122,3 +129,7 @@ def main():
 # Execute the main function
 if __name__ == "__main__":
     main()
+
+
+
+
