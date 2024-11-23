@@ -11,21 +11,12 @@
 import math
 
 # Variable declarations
-
 birdfeeders: int = 0  # Number of bird feeders in the forest of 5000 ha
 
 # Calculated final survival rate based on diminishing returns formula
 calculated_survival_rate: float = 0.0
 
-
 # Forest attractiveness description
-forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
-
-
-
-import math
-
-# Constant for forest attractiveness message
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
 # Function to classify bird feeders
@@ -83,10 +74,9 @@ def main():
         try:
             # Input number of feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
-            
             if birdfeeders == -1:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break  # Exit the program when -1 is entered
+                break  # Exit the loop after printing the goodbye message
 
             if birdfeeders < 0:
                 print("Number of feeders cannot be negative.")
@@ -118,15 +108,14 @@ def main():
             print("-" * 40)
 
             # Prompt for new calculation
-            while True:
-                new_calc = input("New calculation (y or n)? ").strip().lower()
-                if new_calc in ["n", "no"]:
-                    print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                    return  # Exit the program immediately after printing the goodbye message
-                elif new_calc in ["y", "yes"]:
-                    break  # Continue to the next calculation
-                else:
-                    print("Invalid input. Please enter 'y' or 'n'.")
+            new_calc = input("New calculation (y or n)? ").strip().lower()
+            if new_calc in ["n", "no"]:
+                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+                break  # Exit the program after printing the goodbye message
+            elif new_calc in ["y", "yes"]:
+                continue  # Continue the loop and start the next calculation
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
