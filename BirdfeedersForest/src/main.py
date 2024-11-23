@@ -22,6 +22,7 @@ calculated_survival_rate: float = 0.0
 forestattractiveness: str = "The forest is considered more attractive due to the increased healthier bird population."
 
 
+
 import math
 
 # Constant for forest attractiveness message
@@ -82,6 +83,7 @@ def main():
         try:
             # Input number of feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
+            
             if birdfeeders == -1:
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the program when -1 is entered
@@ -115,22 +117,21 @@ def main():
             print(f"\n{forestattractiveness}")
             print("-" * 40)
 
-            # Ask the user if they want to do a new calculation
-            new_calc = input("New calculation (y or n)? ").strip().lower()
-            if new_calc in ["n", "no"]:
-                print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break  # Exit the loop and program
-            elif new_calc not in ["y", "yes"]:
-                print("Invalid input. Please enter 'y' or 'n'.")
-                
+            # Prompt for new calculation
+            while True:
+                new_calc = input("New calculation (y or n)? ").strip().lower()
+                if new_calc in ["n", "no"]:
+                    print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
+                    return  # Exit the program immediately after printing the goodbye message
+                elif new_calc in ["y", "yes"]:
+                    break  # Continue to the next calculation
+                else:
+                    print("Invalid input. Please enter 'y' or 'n'.")
+
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
 # Run the program
 if __name__ == "__main__":
     main()
-
-
-
-
 
