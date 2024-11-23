@@ -97,6 +97,7 @@ def main():
             # User input for the number of bird feeders
             birdfeeders = int(input("Enter the number of bird feeders (or -1 to exit): "))
             if birdfeeders == -1:
+                # Goodbye message when the user enters -1
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
                 break  # Exit the loop if user inputs -1
 
@@ -131,8 +132,9 @@ def main():
             # Ask if the user wants to perform another calculation
             user_input = input("New calculation (y or n)? ").strip().lower()
             if user_input in ["n", "no"]:
+                # Goodbye message when the user chooses to exit with 'n'
                 print("Thank you for using the Forest Attractiveness Calculator. Goodbye!")
-                break  # Explicitly break out of the loop
+                break  # Exit the loop
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
@@ -140,4 +142,5 @@ def main():
 # Execute the main function
 if __name__ == "__main__":
     main()
+
 
